@@ -2,17 +2,16 @@
 <html lang="es-PE">
 <head>
     <meta charset="UTF-8">
-    <meta  name="viewport"  content="width=device-width, initial-scale=1.0">
-    <title>Reclamaciones  -  SNARD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reclamaciones - SNARD</title>
 </head>
 <body>
     <header>
-        <nav> 
-            <h2 class="subtitulos">Conócenos</h2>
-            
+        <nav>
             <ul class="navegation-menu">
-                <li class="txt_list"><a href="products.html" >Productos</a></li>
-                <li class="txt_list"><a href="services.html" >Servicios</a></li>
+                <li class="txt_list"><a href="index.html">Principal</a></li>
+                <li class="txt_list"><a href="products.html">Productos</a></li>
+                <li class="txt_list"><a href="services.html">Servicios</a></li>
                 <li class="txt_list"><a href="discounts.html">Descuentos</a></li>
                 <li class="txt_list"><a href="blog.html">Blog</a></li>
                 <li class="txt_list"><a href="complaints.html">Reclamaciones</a></li>
@@ -20,26 +19,97 @@
         </nav>
     </header>
     <main>
-
+        <section class="complaints_information">
+            <h2 class="subtitles">LIBRO DE RECLAMACIONES</h2>
+            <p>
+                En SNARD nos interesa conocer la experiencia de nuestros clientes.
+                Si tienes algún inconveniente con nuestros productos o servicios,
+                puedes presentar una queja o reclamo mediante este formulario.
+            </p>
+        </section>
+        <section class="complaints_form">
+            <h2 class="subtitles">DATOS DEL CLIENTE</h2>
+            <form>
+                <div class="form_group">
+                    <label for="name">Nombre completo:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form_group">
+                    <label for="document">Documento de identidad:</label>
+                    <input type="text" id="document" name="document" required>
+                </div>
+                <div class="form_group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form_group">
+                    <label for="phone">Teléfono:</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <section class="complaint_details">
+                    <h2 class="subtitles">DETALLES DE LA RECLAMACIÓN</h2>
+                    <div class="form_group">
+                        <label for="type">Tipo de solicitud:</label>
+                        <select id="type" name="type" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="reclamo">Reclamo</option>
+                            <option value="queja">Queja</option>
+                        </select>
+                    </div>
+                    <div class="form_group">
+                        <label for="product">
+                            Producto o servicio relacionado:
+                        </label>
+                        <input type="text" id="product" name="product">
+                    </div>
+                    <div class="form_group">
+                        <label for="description">
+                            Descripción de los hechos:
+                        </label>
+                        <textarea
+                            id="description"
+                            name="description"
+                            rows="7"
+                            required
+                        ></textarea>
+                    </div>
+                </section>
+                <section class="complaints_submit">
+                    <p>
+                        Revisa que la información ingresada sea correcta
+                        antes de enviar tu reclamación.
+                    </p>
+                    <button type="submit">
+                        Enviar reclamación
+                    </button>
+                </section>
+            </form>
+        </section>
     </main>
     <footer>
-
-        <p>Si tienes alguna pregunta o deseas obtener más
-                información, puedes comunicarte con nosotros.</p>
-        
-        <p>© 2026 SNARD. Todos los derechos reservados.</p>
+        <p>
+            Si tienes alguna pregunta o deseas obtener más
+            información, puedes comunicarte con nosotros.
+        </p>
+        <p>
+            © 2026 SNARD. Todos los derechos reservados.
+        </p>
         <p>
             Contacto:
-            <a href="mailto:gerardohuarcaya45@gmail.com">gerardohuarcaya45@gmail.com</a>
+            <a href="mailto:gerardohuarcaya45@gmail.com">
+                gerardohuarcaya45@gmail.com
+            </a>
         </p>
-        <p>GitHub:
-            <a href="https://github.com/gerardohuarcaya45-stack" target="_blank">gerardohuarcaya45-stack</a>
+        <p>
+            GitHub:
+            <a href="https://github.com/gerardohuarcaya45-stack" target="_blank">
+                gerardohuarcaya45-stack
+            </a>
         </p>
         <p>
             <a href="complaints.html">Libro de Reclamaciones</a>
         </p>
     </footer>
-
 </body>
-
 </html>
+```

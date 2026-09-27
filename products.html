@@ -7,23 +7,21 @@
 </head>
 <body>
     <header>
-        <h1 class="titulo_principal">PRODUCTOS</h1>
-        <nav class="barra_navegacion">
-            <div class="buscador">
-                <input type="text" id="buscarProducto"  placeholder="Buscar producto...">
-                <button id="btnBuscar">Buscar🔍</button>
+        <h1 class="title">PRODUCTOS</h1>
+        <nav class="navegation_bar">
+            <div class="seeker">
+                <input type="text" id="search_product"  placeholder="Buscar producto...">
+                <button id="btnSearch">Buscar🔍</button>
             </div>
 
-            <div class="carrito">
-                🛒 Carrito: <span id="cantidadCarrito">0</span>
+            <div class="shopping">
+                🛒 Carrito: <span id="cart_quantity">0</span>
             </div>
         </nav>
         
         <nav> 
-            <h2 class="subtitles">Explora nuestras secciones</h2>
-            <p class="text">Conoce nuestros productos, servicios, descuentos y
-                contenido relacionado con la tecnología.</p>
             <ul class="navegation-menu">
+                <li class="txt_list"><a href="index.html">Principal</a></li>
                 <li class="txt_list"><a href="products.html" >Productos</a></li>
                 <li class="txt_list"><a href="services.html" >Servicios</a></li>
                 <li class="txt_list"><a href="discounts.html">Descuentos</a></li>
@@ -35,38 +33,461 @@
     
     <main>
         <div>
-            <h2 class="subtitulos">Productos disponibles</h2>
+            <h2 class="subtitles">Productos disponibles</h2>
 
-            <div class="imagenes_ventas">
-                <img src="imagenes/Pagina/productos/Gemini_Generated_Image_o26a5co26a5co26a.jpg" alt="camara web">    
-            </div>
-
-            <div class="informacion">
-                <h3>Webcam Full HD USB con Micrófono</h3>
-                <div>
-                    <p>Precio: S/ 89.90</p>
-                    <p>Stock: 15 unidades</p>
-                    <p>Gama: Media</p>
-                    <p>Garantía: 12 meses</p>
+            <article class="product" id="webcam">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_o26a5co26a5co26a.jpg" alt="camara web">    
                 </div>
-                <div>
-                    <h4>Ficha Técnica:</h4>
-                    <p>Resolución: Full HD 1080p</p>
-                    <p>Micrófono: Micrófono integrado con reducción de ruido</p>
-                    <p>Compatibilidad: Windows, macOS y Linux</p>
-                    <p>Diseño / Montaje: Cuerpo compacto con clip ajustable para monitor o laptop</p>
-                    <p>Enfoque: Automático</p>
+                <div class="information">
+                    <h3>Webcam Full HD USB con Micrófono</h3>
+                    <div>
+                        <p>Precio: S/ 89.90</p>
+                        <p>Stock: 15 unidades</p>
+                        <p>Gama: Media</p>
+                        <p>Garantía: 12 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Resolución: Full HD 1080p</p>
+                        <p>Micrófono: Micrófono integrado con reducción de ruido</p>
+                        <p>Compatibilidad: Windows, macOS y Linux</p>
+                        <p>Diseño / Montaje: Cuerpo compacto con clip ajustable para monitor o laptop</p>
+                        <p>Enfoque: Automático</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="acciones">
-                <button class="botones">Agregar al carrito</button>
-            </div>
-            
-            <div> 
-                <h2 class="subtitulos">Productos agotados</h2>
-            </div>
+                <div class="actions">
+                    <button class="buttons">Agregar al carrito</button>
+                </div>
+            </article>
+            <article class="product" id="keyboard">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_8l593i8l593i8l59.jpg" alt="Teclado Mecánico RGB">
+                </div>
+                <div class="information">
+                    <h3>Teclado Mecánico RGB</h3>
+                    <div>
+                        <p>Precio: S/ 129.90</p>
+                        <p>Stock: 12 unidades</p>
+                        <p>Gama: Media</p>
+                        <p>Garantía: 12 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Tipo: Mecánico</p>
+                        <p>Iluminación: RGB</p>
+                        <p>Conexión: USB</p>
+                        <p>Distribución: Español</p>
+                        <p>Compatibilidad: Windows, macOS y Linux</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons">Agregar al carrito</button>
+                </div>
+            </article>
+            <article class="product" id="mouse">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_nzeqegnzeqegnzeq.jpg" alt="Mouse Inalámbrico Ergonómico">
+                </div>
+                <div class="information">
+                    <h3>Mouse Inalámbrico Ergonómico</h3>
+                    <div>
+                        <p>Precio: S/ 59.90</p>
+                        <p>Stock: 20 unidades</p>
+                        <p>Gama: Media</p>
+                        <p>Garantía: 12 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Conexión: Inalámbrica 2.4 GHz</p>
+                        <p>Sensor: Óptico</p>
+                        <p>Resolución: 1600 DPI</p>
+                        <p>Botones: 6 botones</p>
+                        <p>Alimentación: 1 batería AA</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons">Agregar al carrito</button>
+                </div>
+            </article>
+            <article class="product" id="headphones">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_as1xddas1xddas1x.jpg" alt="Audífonos Gaming con Micrófono">
+                </div>
+                <div class="information">
+                    <h3>Audífonos Gaming con Micrófono</h3>
+                    <div>
+                        <p>Precio: S/ 149.90</p>
+                        <p>Stock: 8 unidades</p>
+                        <p>Gama: Media-Alta</p>
+                        <p>Garantía: 12 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Conexión: USB</p>
+                        <p>Audio: Estéreo</p>
+                        <p>Micrófono: Integrado</p>
+                        <p>Control: Volumen integrado en el cable</p>
+                        <p>Compatibilidad: PC, PlayStation y dispositivos compatibles</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons">Agregar al carrito</button>
+                </div>
+            </article>
+            <article class="product" id="ssd">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_lp9ma8lp9ma8lp9m.jpg" alt="SSD 480 GB SATA">
+                </div>
+                <div class="information">
+                    <h3>SSD 480 GB SATA</h3>
+                    <div>
+                        <p>Precio: S/ 159.90</p>
+                        <p>Stock: 10 unidades</p><p>Gama: Media</p>
+                        <p>Garantía: 24 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Capacidad: 480 GB</p>
+                        <p>Interfaz: SATA III</p>
+                        <p>Formato: 2.5 pulgadas</p>
+                        <p>Lectura: Hasta 500 MB/s</p>
+                        <p>Escritura: Hasta 450 MB/s</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons">Agregar al carrito</button>
+                </div>
+            </article>
+            <article class="product" id="ram">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_7p6cpg7p6cpg7p6c.jpg" alt="Memoria RAM DDR4 16 GB">
+                </div>
+                <div class="information">
+                    <h3>Memoria RAM DDR4 16 GB</h3>
+                    <div>
+                        <p>Precio: S/ 169.90</p>
+                        <p>Stock: 14 unidades</p>
+                        <p>Gama: Media</p>
+                        <p>Garantía: 24 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Capacidad: 16 GB</p>
+                        <p>Tipo: DDR4</p>
+                        <p>Velocidad: 3200 MHz</p>
+                        <p>Formato: DIMM</p>
+                        <p>Uso: Computadoras de escritorio</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons">Agregar al carrito</button>
+                </div>
+            </article>
+            <article class="product" id="monitor">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_2zpwdt2zpwdt2zpw.jpg" alt="Monitor Full HD de 24 pulgadas">
+                </div>
+                <div class="information">
+                    <h3>Monitor Full HD 24"</h3>
+                    <div>
+                        <p>Precio: S/ 499.90</p>
+                        <p>Stock: 7 unidades</p>
+                        <p>Gama: Media</p>
+                        <p>Garantía: 12 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Tamaño: 24 pulgadas</p>
+                        <p>Resolución: 1920 × 1080</p>
+                        <p>Frecuencia: 75 Hz</p>
+                        <p>Panel: IPS</p>
+                        <p>Conexiones: HDMI y VGA</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons">Agregar al carrito</button>
+                </div>
+            </article>
+            <article class="product" id="laptop">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_lo5rvjlo5rvjlo5r.jpg" alt="Laptop para Oficina de 15.6 pulgadas">
+                </div>
+                <div class="information">
+                    <h3>Laptop para Oficina 15.6"</h3>
+                    <div>
+                        <p>Precio: S/ 1,899.90</p>
+                        <p>Stock: 6 unidades</p>
+                        <p>Gama: Media</p>
+                        <p>Garantía: 12 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Pantalla: 15.6 pulgadas Full HD</p>
+                        <p>Procesador: Intel Core i5</p>
+                        <p>Memoria RAM: 8 GB</p>
+                        <p>Almacenamiento: SSD 512 GB</p>
+                        <p>Sistema operativo: Windows 11</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons">Agregar al carrito</button>
+                </div>
+            </article>
+            <article class="product" id="router">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_dfjq8ndfjq8ndfjq.jpg" alt="Router Wi-Fi Doble Banda">
+                </div>
+                <div class="information">
+                    <h3>Router Wi-Fi Doble Banda</h3>
+                    <div>
+                        <p>Precio: S/ 139.90</p>
+                        <p>Stock: 11 unidades</p>
+                        <p>Gama: Media</p>
+                        <p>Garantía: 12 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Velocidad: Hasta 1200 Mbps</p>
+                        <p>Bandas: 2.4 GHz y 5 GHz</p>
+                        <p>Antenas: 4 antenas externas</p>
+                        <p>Puertos: 4 LAN + 1 WAN</p>
+                        <p>Seguridad: WPA2 / WPA3</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons">Agregar al carrito</button>
+                </div>
+            </article>
+            <article class="product" id="power_supply">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_ixamesixamesixam.jpg" alt="Fuente de Poder de 650 W">
+                </div>
+                <div class="information">
+                    <h3>Fuente de Poder 650 W</h3>
+                    <div>
+                        <p>Precio: S/ 249.90</p>
+                        <p>Stock: 5 unidades</p>
+                        <p>Gama: Media-Alta</p>
+                        <p>Garantía: 24 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Potencia: 650 W</p>
+                        <p>Formato: ATX</p>
+                        <p>Ventilación: Ventilador de 120 mm</p>
+                        <p>Protecciones: OVP, OPP y SCP</p>
+                        <p>Conectores: ATX, CPU, PCIe y SATA</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons">Agregar al carrito</button>
+                </div>
+            </article>
+            <article class="product" id="external_drive">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_2k79m12k79m12k79.jpg" alt="Disco Duro Externo de 1 TB">
+                </div>
+                <div class="information">
+                    <h3>Disco Duro Externo 1 TB</h3>
+                    <div>
+                        <p>Precio: S/ 229.90</p>
+                        <p>Stock: 9 unidades</p>
+                        <p>Gama: Media</p>
+                        <p>Garantía: 12 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Capacidad: 1 TB</p>
+                        <p>Conexión: USB 3.0</p>
+                        <p>Diseño: Portátil</p>
+                        <p>Velocidad: Hasta 120 MB/s</p>
+                        <p>Compatibilidad: Windows, macOS y Linux</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons">Agregar al carrito</button>
+                </div>
+            </article>
+            <article class="product" id="speaker">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_i5cqdui5cqdui5cq.jpg" alt="Parlante Bluetooth Portátil">
+                </div>
+                <div class="information">
+                    <h3>Parlante Bluetooth Portátil</h3>
+                    <div>
+                        <p>Precio: S/ 119.90</p>
+                        <p>Stock: 13 unidades</p>
+                        <p>Gama: Media</p>
+                        <p>Garantía: 12 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Conectividad: Bluetooth 5.0</p>
+                        <p>Potencia: 20 W</p>
+                        <p>Autonomía: Hasta 10 horas</p>
+                        <p>Protección: Resistencia a salpicaduras</p>
+                        <p>Carga: USB-C</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons">Agregar al carrito</button>
+                </div>
+            </article>
         </div>
+        <div> 
+            <h2 class="subtitles">Productos agotados</h2>
+            <article class="product" id="graphics_card">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_ljokfcljokfcljok.jpg" alt="Tarjeta Gráfica">
+                </div>
+                <div class="information">
+                    <h3>Tarjeta Gráfica</h3>
+                    <div>
+                        <p>Precio: S/ 899.90</p>
+                        <p>Stock: 0 unidades</p>
+                        <p>Gama: Media-Alta</p>
+                        <p>Garantía: 12 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Memoria: 6 GB GDDR6</p>
+                        <p>Interfaz: PCI Express</p>
+                        <p>Salidas: HDMI y DisplayPort</p>
+                        <p>Refrigeración: Doble ventilador</p>
+                        <p>Uso: Gaming y edición multimedia</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons" disabled>Agotado</button>
+                </div>
+            </article>
+            <article class="product" id="motherboard">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_dkcqffdkcqffdkcq.jpg" alt="Placa Madre ATX">
+                </div>
+                <div class="information">
+                    <h3>Placa Madre ATX</h3>
+                    <div>
+                        <p>Precio: S/ 429.90</p>
+                        <p>Stock: 0 unidades</p>
+                        <p>Gama: Media</p>
+                        <p>Garantía: 24 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Formato: ATX</p>
+                        <p>Memoria: DDR4</p>
+                        <p>Ranuras: 4 ranuras DIMM</p>
+                        <p>Almacenamiento: SATA III y M.2</p>
+                        <p>Conectividad: USB, HDMI y Ethernet</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons" disabled>Agotado</button>
+                </div>
+            </article>
+            <article class="product" id="processor">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_9slwfd9slwfd9slw.jpg" alt="Procesador">
+                </div>
+                <div class="information">
+                    <h3>Procesador</h3>
+                    <div>
+                        <p>Precio: S/ 1,099.90</p>
+                        <p>Stock: 0 unidades</p>
+                        <p>Gama: Alta</p>
+                        <p>Garantía: 24 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Modelo: Procesador de alto rendimiento</p>
+                        <p>Núcleos: 12 núcleos</p>
+                        <p>Frecuencia: Hasta 4.9 GHz</p>
+                        <p>Socket: Compatible con placa madre correspondiente</p>
+                        <p>Uso: Gaming, productividad y edición</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons" disabled>Agotado</button>
+                </div>
+            </article>
+            <article class="product" id="pc_case">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_ahyyh7ahyyh7ahyy.jpg" alt="Gabinete Gaming ATX">
+                </div>
+                <div class="information">
+                    <h3>Gabinete Gaming ATX</h3>
+                    <div>
+                        <p>Precio: S/ 349.90</p>
+                        <p>Stock: 0 unidades</p>
+                        <p>Gama: Media-Alta</p>
+                        <p>Garantía: 12 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Formato: ATX</p>
+                        <p>Panel lateral: Vidrio templado</p>
+                        <p>Ventiladores: 3 ventiladores RGB</p>
+                        <p>Conectividad: USB 3.0 y audio frontal</p>
+                        <p>Compatibilidad: ATX, Micro-ATX y Mini-ITX</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons" disabled>Agotado</button>
+                </div>
+            </article>
+            <article class="product" id="wifi_adapter">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_3xx9gw3xx9gw3xx9.jpg" alt="Adaptador USB Wi-Fi">
+                </div>
+                <div class="information">
+                    <h3>Adaptador USB Wi-Fi</h3>
+                    <div>
+                        <p>Precio: S/ 69.90</p>
+                        <p>Stock: 0 unidades</p>
+                        <p>Gama: Media</p>
+                        <p>Garantía: 12 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Conexión: USB 3.0</p>
+                        <p>Wi-Fi: Doble banda</p>
+                        <p>Velocidad: Hasta 600 Mbps</p>
+                        <p>Antena: Integrada</p>
+                        <p>Compatibilidad: Windows y sistemas compatibles</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons" disabled>Agotado</button>
+                </div>
+            </article>
+            <article class="product" id="security_camera">
+                <div class="sales_images">
+                    <img src="imagenes/Pagina/productos/Gemini_Generated_Image_10x9va10x9va10x9.jpg" alt="Cámara de Seguridad Wi-Fi">
+                </div>
+                <div class="information">
+                    <h3>Cámara de Seguridad Wi-Fi</h3>
+                    <div>
+                        <p>Precio: S/ 179.90</p>
+                        <p>Stock: 0 unidades</p>
+                        <p>Gama: Media</p>
+                        <p>Garantía: 12 meses</p>
+                    </div>
+                    <div>
+                        <h4>Ficha Técnica:</h4>
+                        <p>Resolución: Full HD 1080p</p>
+                        <p>Conectividad: Wi-Fi</p>
+                        <p>Visión nocturna: Infrarroja</p>
+                        <p>Audio: Micrófono y altavoz integrados</p>
+                        <p>Uso: Interior y monitoreo doméstico</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="buttons" disabled>Agotado</button>
+                </div>
+            </article>
+        </div>  
     </main>
     <footer>
 
@@ -81,7 +502,7 @@
             <a href="https://github.com/gerardohuarcaya45-stack" target="_blank">gerardohuarcaya45-stack</a>
         </p>
         <p>
-            <a href="reclamaciones.html">Libro de Reclamaciones</a>
+            <a href="complaints.html">Libro de Reclamaciones</a>
         </p>
     </footer>
 </body>
