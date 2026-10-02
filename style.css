@@ -18,9 +18,13 @@ a:hover {
     text-decoration: underline;
 }
 
-header {
+header,
+footer {
     background-color: #102a43;
     color: white;
+}
+
+header {
     padding: 20px;
     text-align: center;
 }
@@ -69,9 +73,17 @@ main {
     margin: 30px auto;
 }
 
+.subtitles,
+.information h4,
+.services h3,
+.discount h3,
+.content_news h3,
+.comments h3 {
+    color: #0077b6;
+}
+
 .subtitles {
     text-align: center;
-    color: #0077b6;
     border-bottom: 2px solid #0077b6;
     padding-bottom: 8px;
 }
@@ -86,9 +98,21 @@ main section img {
     margin: 20px auto;
 }
 
-main article {
+main article,
+.product,
+.services,
+.news,
+.comments,
+.new_comments,
+.shopping,
+.complaints_information,
+.complaints_form {
     background-color: white;
     border: 1px solid #ccc;
+}
+
+main article,
+.product {
     padding: 20px;
     margin: 20px 0;
     border-radius: 5px;
@@ -129,8 +153,6 @@ button:hover {
 
 .shopping {
     display: inline-block;
-    background-color: white;
-    border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
 }
@@ -138,14 +160,6 @@ button:hover {
 #cart_quantity {
     color: #0077b6;
     font-weight: bold;
-}
-
-.product {
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 5px;
 }
 
 .sales_images {
@@ -167,10 +181,6 @@ button:hover {
     padding: 0 20px;
 }
 
-.information h4 {
-    color: #0077b6;
-}
-
 .actions {
     display: inline-block;
     width: 20%;
@@ -182,8 +192,6 @@ button:hover {
     display: inline-block;
     width: 47%;
     vertical-align: top;
-    background-color: white;
-    border: 1px solid #ccc;
     padding: 15px;
     margin: 1%;
 }
@@ -192,10 +200,6 @@ button:hover {
     width: 100%;
     height: 200px;
     object-fit: cover;
-}
-
-.services h3 {
-    color: #0077b6;
 }
 
 table {
@@ -229,15 +233,14 @@ th {
     margin: 20px 0;
 }
 
-.discount h3 {
-    color: #0077b6;
-}
-
-.news {
-    background-color: white;
-    border: 1px solid #ccc;
+.news,
+.comments {
     padding: 15px;
     margin: 20px 0;
+}
+
+.comments {
+    margin: 10px 0;
 }
 
 .news .image {
@@ -255,24 +258,7 @@ th {
     padding-left: 20px;
 }
 
-.content_news h3 {
-    color: #0077b6;
-}
-
-.comments {
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin: 10px 0;
-}
-
-.comments h3 {
-    color: #0077b6;
-}
-
 .new_comments {
-    background-color: white;
-    border: 1px solid #ccc;
     padding: 20px;
     margin: 20px auto;
     max-width: 700px;
@@ -291,8 +277,6 @@ th {
 
 .complaints_information,
 .complaints_form {
-    background-color: white;
-    border: 1px solid #ccc;
     padding: 20px;
     margin-bottom: 20px;
 }
@@ -326,8 +310,6 @@ form section:last-child {
 }
 
 footer {
-    background-color: #102a43;
-    color: white;
     text-align: center;
     padding: 20px;
     margin-top: 40px;
