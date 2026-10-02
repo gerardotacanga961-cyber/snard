@@ -1,50 +1,23 @@
-// =========================
 // CARRITO
-// =========================
 
 let cart = JSON.parse(localStorage.getItem("snardCart")) || [];
 
-function updateCart() {
-    let quantity = 0;
-
-    cart.forEach(function(item) {
-        quantity += item.quantity;
-    });
-
-    let counter = document.getElementById("cart_quantity");
-
-    if (counter) {
-        counter.textContent = quantity;
-        localStorage.setItem("snardCart", JSON.stringify(cart));
-    }
-}
-
 document.querySelectorAll(".product .buttons").forEach(function(button) {
-
     button.addEventListener("click", function() {
-
-        if (button.disabled) return;
-
         let product = button.closest(".product");
         let name = product.querySelector("h3").textContent;
-        let priceText = product.querySelector(".information p").textContent;
-        let price = parseFloat(priceText.replace("Precio: S/", ""));
+        let price = parseFloat(
+            product.querySelector(".information p").textContent.replace("Precio: S/", "")
+        );
 
-        let found = cart.find(function(item) {
-            return item.name === name;
-        });
+        cart.push({ name: name, price: price });
+        localStorage.setItem("snardCart", JSON.stringify(cart));
 
-        if (found) {
-            found.quantity++;
-        } else {
-            cart.push({
-                name: name,
-                price: price,
-                quantity: 1
-            });
+        let counter = document.getElementById("cart_quantity");
+        if (counter) {
+            counter.textContent = cart.length;
         }
 
-        updateCart();
         alert("Producto agregado al carrito.");
     });
 });
@@ -53,7 +26,6 @@ let shopping = document.querySelector(".shopping");
 
 if (shopping) {
     shopping.addEventListener("click", function() {
-
         if (cart.length === 0) {
             alert("El carrito está vacío.");
             return;
@@ -62,117 +34,72 @@ if (shopping) {
         let message = "CARRITO:\n\n";
         let total = 0;
 
-        cart.forEach(function(item) {
-            let subtotal = item.price * item.quantity;
-            total += subtotal;
-
-            message += item.name + " x" + item.quantity +
-                       " - S/ " + subtotal.toFixed(2) + "\n";
+        cart.forEach(function(product) {
+            message += product.name + " - S/ " + product.price.toFixed(2) + "\n";
+            total += product.price;
         });
 
         message += "\nTotal: S/ " + total.toFixed(2);
-
         alert(message);
     });
-
-    updateCart();
 }
 
 
-// =========================
 // BÚSQUEDA
-// =========================
 
-let search = document.getElementById("search_product");
 let searchButton = document.getElementById("btnSearch");
 
-function searchProducts() {
-
-    let text = search.value.toLowerCase();
-
-    document.querySelectorAll(".product").forEach(function(product) {
-
-        let name = product.querySelector("h3").textContent.toLowerCase();
-
-        if (name.includes(text)) {
-            product.style.display = "";
-        } else {
-            product.style.display = "none";
-        }
-    });
-}
-
 if (searchButton) {
-    searchButton.addEventListener("click", searchProducts);
+    searchButton.addEventListener("click", function() {
+        let text = document.getElementById("search_product").value.toLowerCase();
+
+        document.querySelectorAll(".product").forEach(function(product) {
+            let name = product.querySelector("h3").textContent.toLowerCase();
+
+            if (name.includes(text)) {
+                product.style.display = "";
+            } else {
+                product.style.display = "none";
+            }
+        });
+    });
 }
 
 
-// =========================
 // COMENTARIOS
-// =========================
 
-let commentBox = document.querySelector(".new_comments");
+let commentButton = document.querySelector(".new_comments button");
 
-if (commentBox) {
-
-    let nameInput = commentBox.querySelector("input");
-    let textInput = commentBox.querySelector("textarea");
-    let button = commentBox.querySelector("button");
-    let list = document.querySelector(".list_comments");
-
-    let comments = JSON.parse(localStorage.getItem("snardComments")) || [];
-
-    function addComment(name, text) {
-
-        let article = document.createElement("article");
-        article.className = "comments";
-
-        article.innerHTML = "<h3>" + name + "</h3><p>" + text + "</p>";
-
-        list.appendChild(article);
-    }
-
-    comments.forEach(function(comment) {
-        addComment(comment.name, comment.text);
-    });
-
-    button.addEventListener("click", function() {
-
-        let name = nameInput.value.trim();
-        let text = textInput.value.trim();
+if (commentButton) {
+    commentButton.addEventListener("click", function() {
+        let name = document.querySelector(".new_comments input").value;
+        let text = document.querySelector(".new_comments textarea").value;
 
         if (name === "" || text === "") {
             alert("Completa tu nombre y comentario.");
             return;
         }
 
-        comments.push({
-            name: name,
-            text: text
-        });
+        let comment = document.createElement("article");
+        comment.className = "comments";
+        comment.innerHTML = "<h3>" + name + "</h3><p>" + text + "</p>";
 
-        localStorage.setItem("snardComments", JSON.stringify(comments));
+        document.querySelector(".list_comments").appendChild(comment);
 
-        addComment(name, text);
-
-        nameInput.value = "";
-        textInput.value = "";
+        document.querySelector(".new_comments input").value = "";
+        document.querySelector(".new_comments textarea").value = "";
 
         alert("Comentario publicado.");
     });
 }
 
 
-// =========================
 // RECLAMACIONES
-// =========================
 
 let form = document.querySelector(".complaints_form form");
 
 if (form) {
-
     form.addEventListener("submit", function(event) {
-
         event.preventDefault();
 
         let name = document.getElementById("name").value;
@@ -184,19 +111,17 @@ if (form) {
 
         if (name === "" || documentNumber === "" ||
             email === "" || type === "" || description === "") {
-
             alert("Completa los campos obligatorios.");
             return;
         }
 
         let subject = "Reclamación SNARD - " + type;
 
-        let body =
-            "Nombre: " + name + "\n" +
-            "Documento: " + documentNumber + "\n" +
-            "Correo: " + email + "\n" +
-            "Producto o servicio: " + product + "\n\n" +
-            "Descripción:\n" + description;
+        let body = "Nombre: " + name +
+            "\nDocumento: " + documentNumber +
+            "\nCorreo: " + email +
+            "\nProducto o servicio: " + product +
+            "\nDescripción: " + description;
 
         window.location.href =
             "mailto:gerardohuarcaya45@gmail.com" +
