@@ -1,6 +1,11 @@
 // CARRITO
 
 let cart = JSON.parse(localStorage.getItem("snardCart")) || [];
+let counter = document.getElementById("cart_quantity");
+
+if (counter) {
+    counter.textContent = cart.length;
+}
 
 document.querySelectorAll(".buttons").forEach(function(button) {
     button.addEventListener("click", function() {
@@ -15,10 +20,31 @@ document.querySelectorAll(".buttons").forEach(function(button) {
         cart.push({ name: name, price: price });
         localStorage.setItem("snardCart", JSON.stringify(cart));
 
-        document.getElementById("cart_quantity").textContent = cart.length;
+        counter.textContent = cart.length;
         alert("Producto agregado al carrito.");
     });
 });
+
+let shopping = document.querySelector(".shopping");
+
+if (shopping) {
+    shopping.addEventListener("click", function() {
+        if (cart.length === 0) {
+            alert("El carrito está vacío.");
+            return;
+        }
+
+        let message = "CARRITO:\n\n";
+        let total = 0;
+
+        cart.forEach(function(product) {
+            message += product.name + " - S/ " + product.price.toFixed(2) + "\n";
+            total += product.price;
+        });
+
+        alert(message + "\nTotal: S/ " + total.toFixed(2));
+    });
+}
 
 
 // BÚSQUEDA
