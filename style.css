@@ -301,31 +301,27 @@ th {
     text-align: center;
 }
 
-.form_group {
-    margin-bottom: 15px;
-}
-
-.form_group label {
+form label {
     display: block;
-    margin-bottom: 5px;
+    margin: 10px 0 5px;
     font-weight: bold;
 }
 
-.form_group input,
-.form_group select,
-.form_group textarea {
+form input,
+form select,
+form textarea {
     width: 100%;
     padding: 10px;
+    box-sizing: border-box;
 }
 
-.complaint_details,
-.complaints_submit {
+form section {
     border-top: 1px solid #ccc;
     margin-top: 20px;
     padding-top: 20px;
 }
 
-.complaints_submit {
+form section:last-child {
     text-align: center;
 }
 
@@ -335,31 +331,4 @@ footer {
     text-align: center;
     padding: 20px;
     margin-top: 40px;
-}
-
-@media (max-width: 700px) {
-    .txt_list {
-        display: block;
-    }
-
-    .seeker,
-    #search_product,
-    .shopping {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .sales_images,
-    .information,
-    .actions {
-        display: block;
-        width: 100%;
-        padding: 10px 0;
-    }
-
-    .services,
-    .news .image,
-    .content_news {
-        width: 100%;
-    }
 }
