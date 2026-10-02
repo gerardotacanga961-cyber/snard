@@ -1,243 +1,198 @@
-document.addEventListener("DOMContentLoaded", function () {
+// =========================
+// CARRITO
+// =========================
 
-    // ==============================
-    // CARRITO DE PRODUCTOS
-    // ==============================
-    const cartQuantity = document.getElementById("cart_quantity");
-    const productButtons = document.querySelectorAll(".product .buttons");
-    const shopping = document.querySelector(".shopping");
+let cart = JSON.parse(localStorage.getItem("snardCart")) || [];
 
-    let cart = JSON.parse(localStorage.getItem("snardCart")) || [];
+function updateCart() {
+    let quantity = 0;
 
-    function updateCartQuantity() {
-        if (cartQuantity) {
-            const total = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartQuantity.textContent = total;
-        }
-    }
-
-    function saveCart() {
-        localStorage.setItem("snardCart", JSON.stringify(cart));
-        updateCartQuantity();
-    }
-
-    productButtons.forEach(function (button) {
-        if (button.disabled) return;
-
-        button.addEventListener("click", function () {
-            const product = button.closest(".product");
-
-            if (!product) return;
-
-            const name = product.querySelector(".information h3").textContent.trim();
-            const priceText = product.querySelector(".information p").textContent;
-            const price = parseFloat(
-                priceText.replace("Precio: S/", "").replace(",", ".")
-            );
-
-            const existingProduct = cart.find(function (item) {
-                return item.name === name;
-            });
-
-            if (existingProduct) {
-                existingProduct.quantity++;
-            } else {
-                cart.push({
-                    name: name,
-                    price: price,
-                    quantity: 1
-                });
-            }
-
-            saveCart();
-
-            alert(name + " fue agregado al carrito.");
-        });
+    cart.forEach(function(item) {
+        quantity += item.quantity;
     });
 
-    if (shopping) {
-        shopping.style.cursor = "pointer";
+    document.getElementById("cart_quantity").textContent = quantity;
+    localStorage.setItem("snardCart", JSON.stringify(cart));
+}
 
-        shopping.addEventListener("click", function () {
-            if (cart.length === 0) {
-                alert("El carrito está vacío.");
-                return;
-            }
+document.querySelectorAll(".product .buttons").forEach(function(button) {
 
-            let message = "PRODUCTOS EN EL CARRITO:\n\n";
-            let total = 0;
+    button.addEventListener("click", function() {
 
-            cart.forEach(function (item) {
-                const subtotal = item.price * item.quantity;
-                total += subtotal;
+        if (button.disabled) return;
 
-                message += item.name +
-                    " x" + item.quantity +
-                    " - S/ " + subtotal.toFixed(2) + "\n";
-            });
+        let product = button.closest(".product");
+        let name = product.querySelector("h3").textContent;
+        let priceText = product.querySelector(".information p").textContent;
+        let price = parseFloat(priceText.replace("Precio: S/", ""));
 
-            message += "\nTotal: S/ " + total.toFixed(2);
-
-            alert(message);
+        let found = cart.find(function(item) {
+            return item.name === name;
         });
-    }
 
-    updateCartQuantity();
-
-
-    // ==============================
-    // BÚSQUEDA DE PRODUCTOS
-    // ==============================
-    const searchInput = document.getElementById("search_product");
-    const searchButton = document.getElementById("btnSearch");
-    const products = document.querySelectorAll(".product");
-
-    function searchProducts() {
-        if (!searchInput) return;
-
-        const searchText = searchInput.value.toLowerCase().trim();
-
-        products.forEach(function (product) {
-            const name = product.querySelector(".information h3");
-
-            if (!name) return;
-
-            const productName = name.textContent.toLowerCase();
-
-            if (productName.includes(searchText)) {
-                product.style.display = "";
-            } else {
-                product.style.display = "none";
-            }
-        });
-    }
-
-    if (searchButton) {
-        searchButton.addEventListener("click", searchProducts);
-    }
-
-    if (searchInput) {
-        searchInput.addEventListener("keyup", function (event) {
-            if (event.key === "Enter") {
-                searchProducts();
-            }
-        });
-    }
-
-
-    // ==============================
-    // COMENTARIOS DEL BLOG
-    // ==============================
-    const commentsList = document.querySelector(".list_comments");
-    const commentBox = document.querySelector(".new_comments");
-
-    if (commentsList && commentBox) {
-        const nameInput = commentBox.querySelector("input");
-        const commentInput = commentBox.querySelector("textarea");
-        const commentButton = commentBox.querySelector("button");
-
-        let comments = JSON.parse(localStorage.getItem("snardComments")) || [];
-
-        function showComments() {
-            comments.forEach(function (comment) {
-                addCommentToPage(comment.name, comment.text);
-            });
-        }
-
-        function addCommentToPage(name, text) {
-            const article = document.createElement("article");
-            article.className = "comments";
-
-            const title = document.createElement("h3");
-            title.textContent = name;
-
-            const paragraph = document.createElement("p");
-            paragraph.textContent = text;
-
-            article.appendChild(title);
-            article.appendChild(paragraph);
-            commentsList.appendChild(article);
-        }
-
-        commentButton.addEventListener("click", function () {
-            const name = nameInput.value.trim();
-            const text = commentInput.value.trim();
-
-            if (name === "" || text === "") {
-                alert("Completa tu nombre y tu comentario.");
-                return;
-            }
-
-            const newComment = {
+        if (found) {
+            found.quantity++;
+        } else {
+            cart.push({
                 name: name,
-                text: text
-            };
+                price: price,
+                quantity: 1
+            });
+        }
 
-            comments.push(newComment);
-            localStorage.setItem("snardComments", JSON.stringify(comments));
-
-            addCommentToPage(name, text);
-
-            nameInput.value = "";
-            commentInput.value = "";
-
-            alert("Tu comentario fue publicado correctamente.");
-        });
-
-        showComments();
-    }
-
-
-    // ==============================
-    // LIBRO DE RECLAMACIONES
-    // ==============================
-    const complaintForm = document.querySelector(".complaints_form form");
-
-    if (complaintForm) {
-        complaintForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            const name = document.getElementById("name").value.trim();
-            const documentNumber = document.getElementById("document").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const phone = document.getElementById("phone").value.trim();
-            const type = document.getElementById("type").value;
-            const product = document.getElementById("product").value.trim();
-            const description = document.getElementById("description").value.trim();
-
-            if (!name || !documentNumber || !email || !type || !description) {
-                alert("Completa todos los campos obligatorios.");
-                return;
-            }
-
-            if (!email.includes("@")) {
-                alert("Ingresa un correo electrónico válido.");
-                return;
-            }
-
-            const subject = encodeURIComponent(
-                "Reclamación SNARD - " + type
-            );
-
-            const body = encodeURIComponent(
-                "LIBRO DE RECLAMACIONES SNARD\n\n" +
-                "Nombre completo: " + name + "\n" +
-                "Documento: " + documentNumber + "\n" +
-                "Correo: " + email + "\n" +
-                "Teléfono: " + (phone || "No indicado") + "\n" +
-                "Tipo de solicitud: " + type + "\n" +
-                "Producto o servicio: " + (product || "No indicado") + "\n\n" +
-                "Descripción:\n" + description
-            );
-
-            window.location.href =
-                "mailto:gerardohuarcaya45@gmail.com?subject=" +
-                subject + "&body=" + body;
-
-            alert(
-                "Los datos fueron preparados correctamente. " +
-                "Se abrirá tu aplicación de correo para completar el envío."
-            );
-        });
-    }
+        updateCart();
+        alert("Producto agregado al carrito.");
+    });
 });
+
+document.querySelector(".shopping").addEventListener("click", function() {
+
+    if (cart.length === 0) {
+        alert("El carrito está vacío.");
+        return;
+    }
+
+    let message = "CARRITO:\n\n";
+    let total = 0;
+
+    cart.forEach(function(item) {
+        let subtotal = item.price * item.quantity;
+        total += subtotal;
+
+        message += item.name + " x" + item.quantity +
+                   " - S/ " + subtotal.toFixed(2) + "\n";
+    });
+
+    message += "\nTotal: S/ " + total.toFixed(2);
+
+    alert(message);
+});
+
+updateCart();
+
+
+// =========================
+// BÚSQUEDA
+// =========================
+
+let search = document.getElementById("search_product");
+let searchButton = document.getElementById("btnSearch");
+
+function searchProducts() {
+
+    let text = search.value.toLowerCase();
+
+    document.querySelectorAll(".product").forEach(function(product) {
+
+        let name = product.querySelector("h3").textContent.toLowerCase();
+
+        if (name.includes(text)) {
+            product.style.display = "";
+        } else {
+            product.style.display = "none";
+        }
+    });
+}
+
+if (searchButton) {
+    searchButton.addEventListener("click", searchProducts);
+}
+
+
+// =========================
+// COMENTARIOS
+// =========================
+
+let commentBox = document.querySelector(".new_comments");
+
+if (commentBox) {
+
+    let nameInput = commentBox.querySelector("input");
+    let textInput = commentBox.querySelector("textarea");
+    let button = commentBox.querySelector("button");
+    let list = document.querySelector(".list_comments");
+
+    let comments = JSON.parse(localStorage.getItem("snardComments")) || [];
+
+    function addComment(name, text) {
+
+        let article = document.createElement("article");
+        article.className = "comments";
+
+        article.innerHTML = "<h3>" + name + "</h3><p>" + text + "</p>";
+
+        list.appendChild(article);
+    }
+
+    comments.forEach(function(comment) {
+        addComment(comment.name, comment.text);
+    });
+
+    button.addEventListener("click", function() {
+
+        let name = nameInput.value.trim();
+        let text = textInput.value.trim();
+
+        if (name === "" || text === "") {
+            alert("Completa tu nombre y comentario.");
+            return;
+        }
+
+        comments.push({
+            name: name,
+            text: text
+        });
+
+        localStorage.setItem("snardComments", JSON.stringify(comments));
+
+        addComment(name, text);
+
+        nameInput.value = "";
+        textInput.value = "";
+
+        alert("Comentario publicado.");
+    });
+}
+
+
+// =========================
+// RECLAMACIONES
+// =========================
+
+let form = document.querySelector(".complaints_form form");
+
+if (form) {
+
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let documentNumber = document.getElementById("document").value;
+        let email = document.getElementById("email").value;
+        let type = document.getElementById("type").value;
+        let product = document.getElementById("product").value;
+        let description = document.getElementById("description").value;
+
+        if (name === "" || documentNumber === "" ||
+            email === "" || type === "" || description === "") {
+
+            alert("Completa los campos obligatorios.");
+            return;
+        }
+
+        let subject = "Reclamación SNARD - " + type;
+
+        let body =
+            "Nombre: " + name + "\n" +
+            "Documento: " + documentNumber + "\n" +
+            "Correo: " + email + "\n" +
+            "Producto o servicio: " + product + "\n\n" +
+            "Descripción:\n" + description;
+
+        window.location.href =
+            "mailto:gerardohuarcaya45@gmail.com" +
+            "?subject=" + encodeURIComponent(subject) +
+            "&body=" + encodeURIComponent(body);
+    });
+}
