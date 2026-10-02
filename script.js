@@ -2,9 +2,11 @@
 
 let cart = JSON.parse(localStorage.getItem("snardCart")) || [];
 
-document.querySelectorAll(".product .buttons").forEach(function(button) {
+document.querySelectorAll(".buttons").forEach(function(button) {
     button.addEventListener("click", function() {
-        let product = button.closest(".product");
+        if (button.disabled) return;
+
+        let product = button.parentElement.parentElement;
         let name = product.querySelector("h3").textContent;
         let price = parseFloat(
             product.querySelector(".information p").textContent.replace("Precio: S/", "")
@@ -13,36 +15,10 @@ document.querySelectorAll(".product .buttons").forEach(function(button) {
         cart.push({ name: name, price: price });
         localStorage.setItem("snardCart", JSON.stringify(cart));
 
-        let counter = document.getElementById("cart_quantity");
-        if (counter) {
-            counter.textContent = cart.length;
-        }
-
+        document.getElementById("cart_quantity").textContent = cart.length;
         alert("Producto agregado al carrito.");
     });
 });
-
-let shopping = document.querySelector(".shopping");
-
-if (shopping) {
-    shopping.addEventListener("click", function() {
-        if (cart.length === 0) {
-            alert("El carrito está vacío.");
-            return;
-        }
-
-        let message = "CARRITO:\n\n";
-        let total = 0;
-
-        cart.forEach(function(product) {
-            message += product.name + " - S/ " + product.price.toFixed(2) + "\n";
-            total += product.price;
-        });
-
-        message += "\nTotal: S/ " + total.toFixed(2);
-        alert(message);
-    });
-}
 
 
 // BÚSQUEDA
@@ -86,9 +62,6 @@ if (commentButton) {
 
         document.querySelector(".list_comments").appendChild(comment);
 
-        document.querySelector(".new_comments input").value = "";
-        document.querySelector(".new_comments textarea").value = "";
-
         alert("Comentario publicado.");
     });
 }
@@ -115,8 +88,6 @@ if (form) {
             return;
         }
 
-        let subject = "Reclamación SNARD - " + type;
-
         let body = "Nombre: " + name +
             "\nDocumento: " + documentNumber +
             "\nCorreo: " + email +
@@ -125,7 +96,7 @@ if (form) {
 
         window.location.href =
             "mailto:gerardohuarcaya45@gmail.com" +
-            "?subject=" + encodeURIComponent(subject) +
+            "?subject=" + encodeURIComponent("Reclamación SNARD - " + type) +
             "&body=" + encodeURIComponent(body);
     });
 }
