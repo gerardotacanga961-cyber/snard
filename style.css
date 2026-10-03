@@ -5,6 +5,14 @@ body {
     margin: 0;
 }
 
+.video {
+    text-align: center;
+}
+
+.video {
+    width: 500px;
+}
+
 img {
     max-width: 100%;
 }
